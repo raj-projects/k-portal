@@ -6,165 +6,265 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navigation from "./components/Navigation";
-import ChatBot from "./components/ChatBot";
-import Index from "./pages/Index";
-import Weather from "./pages/Weather";
-import MandiPrices from "./pages/MandiPrices";
-import Videos from "./pages/Videos";
-import FarmingTools from "./pages/FarmingTools";
-import FarmingToolsEnhanced from "./pages/FarmingToolsEnhanced";
-import Community from "./pages/Community";
-import PestDetection from "./pages/PestDetection";
-import FinancialTools from "./pages/FinancialTools";
-import Marketplace from "./pages/Marketplace";
-import FarmingNews from "./pages/FarmingNews";
-import WeatherCropAdvisory from "./pages/WeatherCropAdvisory";
-import GovernmentSchemes from "./pages/GovernmentSchemes";
-import FarmingKnowledge from "./pages/FarmingKnowledge";
-import ContactSupport from "./pages/ContactSupport";
+import HomePage from "./pages/HomePage";
 import PlaceholderPage from "./pages/PlaceholderPage";
 import NotFound from "./pages/NotFound";
+import Layout from "./components/layout/Layout";
+import CropAnalyzer from "./components/features/CropAnalyzer";
+import { LanguageProvider } from "./contexts/LanguageContext";
+import { LocationProvider, LocationPicker } from "./components/features/LocationPicker";
+import WeatherPage from "./pages/WeatherPage";
+import MarketPricesPage from "./pages/MarketPricesPage";
+import GovernmentSchemesPage from "./pages/GovernmentSchemesPage";
+import FarmingToolsPage from "./pages/FarmingToolsPage";
+import KnowledgePage from "./pages/KnowledgePage";
+import CommunityPage from "./pages/CommunityPage";
+import NewsPage from "./pages/NewsPage";
+import CropCalculatorPage from "./pages/CropCalculatorPage";
+import CropCalendarPage from "./pages/CropCalendarPage";
+import IrrigationPlannerPage from "./pages/IrrigationPlannerPage";
+import MarketReportPage from "./pages/MarketReportPage";
+import PestIdentificationPage from "./pages/PestIdentificationPage";
+import FertilizerGuidePage from "./pages/FertilizerGuidePage";
+import EquipmentRentalPage from "./pages/EquipmentRentalPage";
+import RegistrationPage from "./pages/RegistrationPage";
+import ContactSupportPage from "./pages/ContactSupportPage";
+import SchemeDetailsPage from "./pages/SchemeDetailsPage";
+import CalendarPage from "./pages/CalendarPage";
 
 const queryClient = new QueryClient();
 
-const Layout = ({ children }: { children: React.ReactNode }) => (
-  <div className="min-h-screen bg-farm-50">
-    <Navigation />
-    {children}
-    <ChatBot />
-    <footer className="bg-farm-700 text-white py-12 mt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <div className="flex items-center mb-4">
-              <div className="bg-white/20 p-2 rounded-lg mr-3">
-                <span className="text-2xl">🌾</span>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">किसानमित्र</h3>
-                <p className="text-sm text-farm-200">KisanMitra</p>
-              </div>
-            </div>
-            <p className="text-farm-200 mb-4">
-              भारत के किसानों के लिए निःशुल्क डिजिटल सहायता प्लेटफॉर्म
-            </p>
-            <p className="text-sm text-farm-300">
-              Free digital platform for Indian farmers
-            </p>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-semibold mb-4">🆘 आपातकालीन हेल्पलाइन</h4>
-            <div className="space-y-3 text-farm-200">
-              <div className="bg-red-600/20 p-3 rounded-lg">
-                <p className="font-bold text-red-200">📞 24x7 किसान हेल्पलाइन</p>
-                <p className="text-xl font-bold">1800-180-1551</p>
-              </div>
-              <p>📞 मौसम आपातकाल: 1800-180-1552</p>
-              <p>🚨 फसल बीमा: 1800-180-1553</p>
-              <p>💰 ऋण सहायता: 1800-180-1554</p>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-semibold mb-4">📞 संपर्क विवरण</h4>
-            <div className="space-y-2 text-farm-200">
-              <p>📧 help@kisanmitra.in</p>
-              <p>📧 support@kisanmitra.in</p>
-              <p>📱 WhatsApp: +91-9876543210</p>
-              <p>📱 SMS सेवा: +91-9876543211</p>
-              <p>🏢 मुख्यालय: नई दिल्ली, भारत</p>
-              <p>⏰ सेवा समय: 24x7 उपलब्ध</p>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-semibold mb-4">🌐 सोशल मीडिया</h4>
-            <div className="space-y-3">
-              <a href="#" className="flex items-center p-2 bg-blue-600/20 rounded-lg hover:bg-blue-600/30 transition-colors">
-                <span className="text-xl mr-3">📘</span>
-                <div>
-                  <p className="font-medium">Facebook</p>
-                  <p className="text-sm text-farm-300">/KisanMitraIndia</p>
-                </div>
-              </a>
-              <a href="#" className="flex items-center p-2 bg-blue-400/20 rounded-lg hover:bg-blue-400/30 transition-colors">
-                <span className="text-xl mr-3">🐦</span>
-                <div>
-                  <p className="font-medium">Twitter</p>
-                  <p className="text-sm text-farm-300">@KisanMitra</p>
-                </div>
-              </a>
-              <a href="#" className="flex items-center p-2 bg-green-600/20 rounded-lg hover:bg-green-600/30 transition-colors">
-                <span className="text-xl mr-3">📱</span>
-                <div>
-                  <p className="font-medium">WhatsApp</p>
-                  <p className="text-sm text-farm-300">+91-9876543210</p>
-                </div>
-              </a>
-              <a href="#" className="flex items-center p-2 bg-red-600/20 rounded-lg hover:bg-red-600/30 transition-colors">
-                <span className="text-xl mr-3">📺</span>
-                <div>
-                  <p className="font-medium">YouTube</p>
-                  <p className="text-sm text-farm-300">KisanMitra Official</p>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-farm-600 mt-8 pt-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center md:text-left">
-            <div>
-              <p className="text-farm-200">&copy; 2024 किसानमित्र (KisanMitra)</p>
-              <p className="text-sm text-farm-300">सभी अधिकार सुरक्षित / All rights reserved</p>
-            </div>
-            <div className="text-farm-300 text-sm">
-              <p>🔒 आप���ी गोपनीयता सुरक्षित है</p>
-              <p>✅ सरकार द्वारा अनुमोदित</p>
-            </div>
-            <div className="text-farm-300 text-sm">
-              <p>🏆 5 करोड़+ किसान भरोसा करते हैं</p>
-              <p>🎯 99.9% अपटाइम गारंटी</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </div>
-);
-
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/weather" element={<Weather />} />
-            <Route path="/weather-crop-advisory" element={<WeatherCropAdvisory />} />
-            <Route path="/farming-tips" element={<PlaceholderPage title="फसल सलाह" subtitle="Crop Advice" />} />
-            <Route path="/mandi-prices" element={<MandiPrices />} />
-            <Route path="/government-schemes" element={<GovernmentSchemes />} />
-            <Route path="/farming-tools" element={<FarmingToolsEnhanced />} />
-            <Route path="/farming-knowledge" element={<FarmingKnowledge />} />
-            <Route path="/contact-support" element={<ContactSupport />} />
-            <Route path="/farming-news" element={<FarmingNews />} />
-            <Route path="/marketplace" element={<Marketplace />} />
-            <Route path="/pest-detection" element={<PestDetection />} />
-            <Route path="/financial-tools" element={<FinancialTools />} />
-            <Route path="/community" element={<Community />} />
-            <Route path="/videos" element={<Videos />} />
-            <Route path="/contact" element={<ContactSupport />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Layout>
-      </BrowserRouter>
-    </TooltipProvider>
+    <LanguageProvider>
+      <LocationProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <LocationPicker />
+        <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+
+          {/* Weather & Crop Advisory */}
+          <Route path="/weather" element={<WeatherPage />} />
+
+          {/* Agriculture News */}
+          <Route path="/news" element={<NewsPage />} />
+
+          {/* Market Prices */}
+          <Route path="/market-prices" element={<MarketPricesPage />} />
+
+          {/* Government Schemes */}
+          <Route path="/schemes" element={<GovernmentSchemesPage />} />
+
+          {/* Individual Scheme Details */}
+          <Route path="/schemes/:id" element={<SchemeDetailsPage />} />
+
+          {/* Farming Tools */}
+          <Route path="/tools" element={<FarmingToolsPage />} />
+
+          {/* Tool Sub-routes */}
+          <Route path="/tools/calculator" element={<CropCalculatorPage />} />
+
+          <Route path="/tools/calendar" element={<CropCalendarPage />} />
+          <Route path="/tools/calendar-old" element={
+            <PlaceholderPage
+              title="Crop Calendar"
+              titleHindi="फसल कैलेंडर"
+              description="फसल-वार बुआई, सिंचाई, उर्वरक और कटाई का समय।"
+              features={[
+                "फसल-वार कैलेंड���",
+                "मासिक कृषि कार��य",
+                "बुआई का उचित समय",
+                "कटाई की तारीख",
+                "क्ष��त्रीय कैलेंडर"
+              ]}
+            />
+          } />
+
+          <Route path="/tools/irrigation" element={<IrrigationPlannerPage />} />
+          <Route path="/tools/irrigation-old" element={
+            <PlaceholderPage
+              title="Irrigation Planner"
+              titleHindi="सिंचाई योजना"
+              description="फसल की पानी क��� आवश्यकता और सिंचाई की योजना।"
+              features={[
+                "पानी की आवश्यकता गणन��",
+                "सिंचाई का समय",
+                "ड्रिप सिस्टम डिजाइन",
+                "पानी ���ी बचत तकनीक",
+                "मौसम आधारित सिंचाई"
+              ]}
+            />
+          } />
+
+          <Route path="/tools/pest-identification" element={<PestIdentificationPage />} />
+          <Route path="/tools/pest-old" element={
+            <PlaceholderPage
+              title="Pest Identification"
+              titleHindi="कीट पहचान"
+              description="फसल के कीट और रोगों की पहचान और उपचार���"
+              features={[
+                "कीट पहचान गाइड",
+                "रोग के लक्षण",
+                "जैविक उपचार",
+                "रासायनिक नियंत्रण",
+                "रोकथाम के उपाय"
+              ]}
+            />
+          } />
+
+          <Route path="/tools/fertilizer" element={<FertilizerGuidePage />} />
+          <Route path="/tools/fertilizer-old" element={
+            <PlaceholderPage
+              title="Fertilizer Guide"
+              titleHindi="उर्वरक गाइड"
+              description="मिट्टी के अनुसार सही उर्वरक क�� च�����ाव और मात्रा।"
+              features={[
+                "मिट्टी परीक्षण गाइड",
+                "NPK की आवश्यकता",
+                "जैविक उर्वरक",
+                "उर्वर�� का समय",
+                "लागत प्रभावी विकल्प"
+              ]}
+            />
+          } />
+
+          <Route path="/tools/equipment" element={<EquipmentRentalPage />} />
+          <Route path="/tools/equipment-old" element={
+            <PlaceholderPage
+              title="Equipment Rental"
+              titleHindi="मशीन किराया"
+              description="कृषि यंत्र और मशीनों का किराया और उपलब्धता।"
+              features={[
+                "मशीन की उपलब्धता",
+                "क��राया दरें",
+                "ऑनलाइन बुकिंग",
+                "मशीन का रखरखाव",
+                "स्थ��नीय सप्लायर"
+              ]}
+            />
+          } />
+
+          {/* Knowledge Center */}
+          <Route path="/knowledge" element={<KnowledgePage />} />
+
+          {/* Community Forum */}
+          <Route path="/community" element={<CommunityPage />} />
+
+          {/* Contact & Support */}
+          <Route path="/contact" element={<ContactSupportPage />} />
+          <Route path="/contact-old" element={
+            <PlaceholderPage
+              title="Contact & Support"
+              titleHindi="संपर��क और सहायता"
+              description="हमसे संपर्क करें या हेल्पलाइन से तुरंत सहायता पाएं।"
+              features={[
+                "24/7 किसान हेल्पलाइन",
+                "ऑनलाइन चैट सहायता",
+                "विशेषज्ञ से ���लाह",
+                "तकनीकी सहायता",
+                "फ���डबैक और सुझाव"
+              ]}
+            />
+          } />
+
+          <Route path="/calendar" element={<CalendarPage />} />
+
+          {/* AI Advisor */}
+          <Route path="/ai-advisor" element={
+            <Layout>
+              <div className="min-h-screen bg-kisan-bg py-12">
+                <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="text-center mb-8">
+                    <h1 className="text-3xl font-bold text-kisan-text-primary mb-4 font-devanagari">
+                      AI कृषि सलाहकार
+                    </h1>
+                    <p className="text-lg text-kisan-text-secondary font-devanagari">
+                      अपनी फसल की तस्वीर अपलोड करें और तुरंत AI से विशे��ज्ञ सलाह पाएं
+                    </p>
+                  </div>
+                  <CropAnalyzer />
+                </div>
+              </div>
+            </Layout>
+          } />
+
+          {/* Crop Calendar (Footer Link) */}
+          <Route path="/crop-calendar" element={
+            <PlaceholderPage
+              title="Crop Calendar"
+              titleHindi="फसल कैल���ंडर"
+              description="सभी प्रमुख फसलों ���े लिए बुआई से कटाई तक का व��स्तृत कैलेंडर।"
+              features={[
+                "धान, गेहूं, कपास, गन्ना कैलेंड���",
+                "राज्य-वार कृषि कैलेंडर",
+                "मासिक कृषि कार्य सूची",
+                "मौसम आधारित सलाह",
+                "त्यौहार ���र शुभ मुहूर्त",
+                "कैले���डर डाउनलोड व प्रिंट"
+              ]}
+            />
+          } />
+
+          {/* Market Report (Homepage Quick Link) */}
+          <Route path="/market-report" element={<MarketReportPage />} />
+
+          {/* Crop Calendar (Footer Link) */}
+          <Route path="/crop-calendar" element={<CropCalendarPage />} />
+
+          {/* Irrigation Planner (Footer Link) */}
+          <Route path="/irrigation-planner" element={<IrrigationPlannerPage />} />
+
+          {/* Fertilizer Guide (Footer Link) */}
+          <Route path="/fertilizer-guide" element={<FertilizerGuidePage />} />
+
+          {/* Pest Management (Footer Link) */}
+          <Route path="/pest-management" element={<PestIdentificationPage />} />
+
+          {/* Video Tutorials (Homepage Quick Link) */}
+          <Route path="/videos" element={
+            <PlaceholderPage
+              title="Video Tutorials"
+              titleHindi="वी���ियो ट्यूट��रियल"
+              description="ख���ती की त��नीकों के लिए विशेषज्ञों ���्वारा बनाए गए वीडियो ट्यूटोरियल।"
+              features={[
+                "फसल उ��ाने क�� विधि",
+                "आधुनिक कृषि तकनीक",
+                "कीट नियंत्रण वीडियो",
+                "मशीन संचालन गाइड",
+                "जैविक खेती विधि",
+                "सफल किसानों के ��नुभव"
+              ]}
+            />
+          } />
+
+          {/* Registration Page (Homepage CTA) */}
+          <Route path="/register" element={<RegistrationPage />} />
+          <Route path="/register-old" element={
+            <PlaceholderPage
+              title="Registration"
+              titleHindi="पंजीकरण"
+              description="किसानमित्र में निःशुल्क पंजीकरण करें और सभी सुविधाओं का लाभ उठाएं।"
+              features={[
+                "निःशु��्क खाता बनाएं",
+                "व्यक्त���गत डैशबोर्ड",
+                "फसल ट्रैकिंग",
+                "कस्टमाइज्ड सलाह",
+                "समुदाय में भागीदारी",
+                "प्रीमियम सुविधाएं"
+              ]}
+            />
+          } />
+
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        </BrowserRouter>
+        </TooltipProvider>
+      </LocationProvider>
+    </LanguageProvider>
   </QueryClientProvider>
 );
 

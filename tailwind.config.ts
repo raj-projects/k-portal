@@ -57,48 +57,69 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        // KisanMitra Agricultural Theme Colors
-        farm: {
-          50: "#f0fdf4",
-          100: "#dcfce7",
-          200: "#bbf7d0",
-          300: "#86efac",
-          400: "#4ade80",
-          500: "#22c55e", // Main green
-          600: "#16a34a",
-          700: "#15803d",
-          800: "#166534",
-          900: "#14532d",
+        // KisanSetu Agricultural Theme Colors
+        'kisan-green': {
+          DEFAULT: '#2E8B57',
+          50: '#F0FDF4',
+          100: '#DCFCE7',
+          200: '#BBF7D0',
+          300: '#86EFAC',
+          400: '#4ADE80',
+          500: '#22C55E',
+          600: '#16A34A',
+          700: '#15803D',
+          800: '#166534',
+          900: '#14532D',
         },
-        harvest: {
-          50: "#fefce8",
-          100: "#fef9c3",
-          200: "#fef08a",
-          300: "#fde047",
-          400: "#facc15", // Main yellow
-          500: "#eab308",
-          600: "#ca8a04",
-          700: "#a16207",
-          800: "#854d0e",
-          900: "#713f12",
+        'kisan-yellow': {
+          DEFAULT: '#FFC107',
+          50: '#FFFBEB',
+          100: '#FEF3C7',
+          200: '#FDE68A',
+          300: '#FCD34D',
+          400: '#FBBF24',
+          500: '#F59E0B',
+          600: '#D97706',
+          700: '#B45309',
+          800: '#92400E',
+          900: '#78350F',
         },
-        soil: {
-          50: "#fdf8f6",
-          100: "#f2e8e5",
-          200: "#eaddd7",
-          300: "#e0cec7",
-          400: "#d2bab0",
-          500: "#bfa094",
-          600: "#a18072",
-          700: "#977669",
-          800: "#8b6f47", // Main brown
-          900: "#73543b",
+        'kisan-earth': '#D4A373',
+        'kisan-bg': '#F6F7F9',
+        'kisan-text': {
+          primary: '#222222',
+          secondary: '#333333',
+          muted: '#666666',
         },
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        'kisan': '8px',
+        'kisan-lg': '12px',
+      },
+      fontFamily: {
+        'devanagari': ['Noto Sans Devanagari', 'Noto Sans', 'sans-serif'],
+        'latin': ['Inter', 'Roboto', 'sans-serif'],
+      },
+      fontSize: {
+        'kisan-h1': ['2rem', { lineHeight: '2.5rem' }], // 32px
+        'kisan-h1-mobile': ['1.5rem', { lineHeight: '2rem' }], // 24px
+        'kisan-h2': ['1.5rem', { lineHeight: '2rem' }], // 24px
+        'kisan-h2-mobile': ['1.25rem', { lineHeight: '1.75rem' }], // 20px
+        'kisan-body': ['1rem', { lineHeight: '1.6' }], // 16px
+        'kisan-body-mobile': ['0.875rem', { lineHeight: '1.6' }], // 14px
+      },
+      spacing: {
+        'kisan-card': '1rem', // 16px
+        'kisan-card-lg': '1.5rem', // 24px
+        'kisan-section': '2rem', // 32px
+        'kisan-section-lg': '3rem', // 48px
+      },
+      minHeight: {
+        'touch-target': '44px',
+        'touch-target-lg': '48px',
       },
       keyframes: {
         "accordion-down": {

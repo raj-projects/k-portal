@@ -9,35 +9,35 @@
    * A different format will require also updating the theme in tailwind.config.ts.
   */
   :root {
-    --background: 96 100% 98%;
-    --foreground: 156 72% 12%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 13.3%; /* #222222 */
 
     --card: 0 0% 100%;
-    --card-foreground: 156 72% 12%;
+    --card-foreground: 0 0% 13.3%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 156 72% 12%;
+    --popover-foreground: 0 0% 13.3%;
 
-    --primary: 142 76% 36%;
+    --primary: 146 50% 36%; /* #2E8B57 - KisanSetu Green */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 48 96% 89%;
-    --secondary-foreground: 156 72% 12%;
+    --secondary: 208 20% 96%; /* #F6F7F9 - KisanSetu Background */
+    --secondary-foreground: 0 0% 20%; /* #333333 */
 
-    --muted: 96 100% 96%;
-    --muted-foreground: 25 6% 45%;
+    --muted: 208 20% 96%;
+    --muted-foreground: 0 0% 40%; /* #666666 */
 
-    --accent: 48 96% 89%;
-    --accent-foreground: 156 72% 12%;
+    --accent: 45 100% 51%; /* #FFC107 - KisanSetu Yellow */
+    --accent-foreground: 0 0% 13.3%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 96 35% 88%;
-    --input: 96 35% 88%;
-    --ring: 142 76% 36%;
+    --border: 208 20% 91%;
+    --input: 208 20% 91%;
+    --ring: 146 50% 36%;
 
-    --radius: 0.75rem;
+    --radius: 8px; /* KisanSetu border radius */
 
     --sidebar-background: 0 0% 98%;
 
@@ -57,33 +57,33 @@
   }
 
   .dark {
-    --background: 156 84% 5%;
-    --foreground: 96 100% 98%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-    --card: 156 84% 5%;
-    --card-foreground: 96 100% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 156 84% 5%;
-    --popover-foreground: 96 100% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 142 76% 36%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
 
-    --secondary: 156 32% 18%;
-    --secondary-foreground: 96 100% 98%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 156 32% 18%;
-    --muted-foreground: 25 20% 65%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 156 32% 18%;
-    --accent-foreground: 96 100% 98%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 96 100% 98%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 156 32% 18%;
-    --input: 156 32% 18%;
-    --ring: 142 76% 60%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -101,6 +101,27 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-latin;
+  }
+
+  /* KisanSetu specific styles */
+  .font-devanagari {
+    font-family: 'Noto Sans Devanagari', 'Noto Sans', sans-serif;
+  }
+
+  .kisan-card {
+    @apply bg-white rounded-kisan shadow-sm border border-border;
+  }
+
+  .kisan-btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200;
+  }
+
+  .kisan-btn-secondary {
+    @apply bg-accent text-accent-foreground hover:bg-accent/90 transition-colors duration-200;
+  }
+
+  .touch-target {
+    @apply min-h-touch-target cursor-pointer;
   }
 }
