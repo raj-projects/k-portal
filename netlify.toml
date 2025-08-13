@@ -1,6 +1,6 @@
 [build]
   # Run only your actual build script — Netlify installs dependencies automatically
-  command = "npm run build:client"
+  command = "npm run build:client && npm run build:server"
   functions = "netlify/functions"
   publish = "dist/spa"
 
